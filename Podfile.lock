@@ -1,0 +1,40 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.6)
+  - ProgressHUD (13.4)
+  - RxCocoa (6.1.0):
+    - RxRelay (= 6.1.0)
+    - RxSwift (= 6.1.0)
+  - RxRelay (6.1.0):
+    - RxSwift (= 6.1.0)
+  - RxSwift (6.1.0)
+  - SwiftMessages (9.0.0):
+    - SwiftMessages/App (= 9.0.0)
+  - SwiftMessages/App (9.0.0)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - ProgressHUD
+  - RxCocoa
+  - RxSwift
+  - SwiftMessages
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - ProgressHUD
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SwiftMessages
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  ProgressHUD: 137a7fc677487c5581668f4490563124fb35c232
+  RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
+  RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
+  RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SwiftMessages: 55274ca3a239062398603008ed81924cfd1fe798
+
+PODFILE CHECKSUM: 15e320866475e2015a8b9a0904ecffae43b2afcc
+
+COCOAPODS: 1.10.1
