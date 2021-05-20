@@ -14,8 +14,8 @@ class HomeViewModel{
     private var managerConnection = HomeApiManager()
     
      
-    func gestListMoviesData() -> Observable<Movies> {
-        return managerConnection.getPopularMovies()
+    func gestListMoviesData(page:Int) -> Observable<Movies> {
+        return managerConnection.getPopularMovies(page: page)
     }
     
     func bind(view: HomeView, router: HomeRouter) {

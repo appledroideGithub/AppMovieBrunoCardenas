@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import ProgressHUD
 
 class HomeView: BaseViewController {
 
@@ -16,6 +17,7 @@ class HomeView: BaseViewController {
     private var router = HomeRouter()
     private var movies = [Movie]()
     @IBOutlet weak var tableView: UITableView!
+    var  currentPage = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -51,14 +53,17 @@ class HomeView: BaseViewController {
     }
     
     private func getData() {
-        return viewModel.gestListMoviesData()
+        ProgressHUD.show()
+        return viewModel.gestListMoviesData(page: currentPage)
             .subscribe(on: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { movies in
-                    self.movies = movies.listOfMovies
+                    ProgressHUD.dismiss()
+                    self.movies.append(contentsOf: movies.listOfMovies)
                     self.reloadTableView()
             }, onError: { error in
+                ProgressHUD.dismiss()
                 print(error.localizedDescription)
             }, onCompleted: {
             }).disposed(by: disposeBag)
@@ -76,6 +81,10 @@ extension HomeView: UITableViewDelegate, UITableViewDataSource {
         cell.imageMovie.downloadImage(urlImage: "\(Constants.URL.urlImages+self.movies[indexPath.row].image)", placeHolderImage: UIImage(named: "background")!)
         cell.titleMovie.text = movies[indexPath.row].title
         cell.descriptionMovie.text = movies[indexPath.row].sinopsis
+        if indexPath.row == movies.count - 1 {
+            currentPage += 1
+            self.getData()
+        }
         return cell
     }
     

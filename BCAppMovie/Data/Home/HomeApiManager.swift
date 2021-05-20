@@ -10,9 +10,9 @@ import RxSwift
 
 class HomeApiManager: BaseApiManager<Movies,Error> {
     
-    func getPopularMovies() -> Observable<Movies> {
+    func getPopularMovies(page:Int) -> Observable<Movies> {
         httpMethod = .GET
-        urlPath = Constants.URL.main+Constants.Endpoints.urlListPopularMovies+Constants.apiKey
+        urlPath = Constants.URL.main+Constants.Endpoints.urlListPopularMovies+Constants.apiKey+"&page=" + String(page)
         createRequest()
         return requestToService()
     }
